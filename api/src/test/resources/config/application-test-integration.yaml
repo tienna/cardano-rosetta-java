@@ -30,7 +30,7 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: none
-    show-sql: true
+    show-sql: ${SHOW_SQL:false}
     defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 

@@ -5,8 +5,13 @@ spring:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:test}?currentSchema=${DB_SCHEMA:preprod}
     hikari:
       connectionTimeout: 100000 #default connection-timeout is 30 seconds
+<<<<<<< Updated upstream
       minimumIdle: 10 # default minimumIdle is 10
       #connections: 48 # ((core_count * 2) + effective_spindle_count), 48 for 16 cores, NVMe Storage, spindle count 16
+=======
+      minimumIdle: 2
+      connections: ${DB_POOL_CONNECTIONS_COUNT:48} # ((core_count * 2) + effective_spindle_count), 48 for 16 cores, NVMe Storage, spindle count 16
+>>>>>>> Stashed changes
 
       keepaliveTime: 60000 # Sends a keep-alive query every 60s to prevent connection closure
 
@@ -19,7 +24,7 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: none
-    show-sql: false
+    show-sql: ${SHOW_SQL:false}
   mvc:
     log-resolved-exception: true
   output:
